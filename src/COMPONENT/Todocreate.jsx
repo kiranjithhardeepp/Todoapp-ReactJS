@@ -14,8 +14,11 @@ function Todocreate({ Todolist, Todo, Todfun }) {
 
   const submiteed = (e) => {
     e.preventDefault();
+    if (!values.trim()) {
+      alert("Please enter a task");
+      return;
+    }
     if (editing !== null) {
-      console.log('clicked');
       // Editing an existing task
       const updatedTodo = [...Todo];
       updatedTodo[editing] = values;
@@ -34,8 +37,7 @@ function Todocreate({ Todolist, Todo, Todfun }) {
 
   const edititem = (id) => {
     setEditing(id);
-    console.log(Todo[id]);
-    setvalue("");
+    setvalue(Todo[id]);
   };
 
   return (
